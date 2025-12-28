@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-wrap">
+        <header>
+            <h1>Weather Check</h1>
+        </header>
+
+        <main>
+            <section class="search-box">
+                <input 
+                    type="text" 
+                    id="city-input"
+                    class="search-box-bar"
+                    placeholder="Barcelona"
+                >
+                <button id="search-btn">search</button>
+            </section>
+
+            <section class="current-weather" id="weather-result">
+                <div class="city-date">
+                    <h2 class="city" id="city-name">Barcelona, Spain</h2>
+                    <p class="date" id="date">Sunday 28 Dec 2025</p>
+                </div>
+
+                <div class="temp-box">
+                    <div class="temp" id="temp">7°c</div>
+                    <div class="weather" id="weather-desc">Raining</div>
+                </div>
+
+                <div class="weather-details">
+                    <div class="detail-card">
+                        <span class="label">Humidity</span>
+                        <span class="value" id="humidity">35%</span>
+                    </div>
+
+                    <div class="detail-card">
+                        <span class="label">Wind Speed</span>
+                        <span class="value" id="wind-speed">2 km/h</span>
+                    </div>
+                </div>
+            </section>
+
+            <div class="error-msg" id="error-message" style="display: none;">
+                <p>City not found. please try again.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
