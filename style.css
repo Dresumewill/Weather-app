@@ -16,19 +16,19 @@ body {
 
 /* Dynamic Backgrounds */
 body.sunny {
-    background: linear-gradient(to bottom right, #FFB75E, #ED8F03);
+    background: linear-gradient(to bottom right, #FFB75E, #3b1484);
 }
 
 body.cloudy {
-    background: linear-gradient(to bottom right, #bdc3c7, #2c3e50);
+    background: linear-gradient(to bottom right, #bdc3c7, #053a6f);
 }
 
 body.rainy {
-    background: linear-gradient(to bottom right, #243B55, #141E30);
+    background: linear-gradient(to bottom right, #243B55, #6b0e96);
 }
 
 body.default {
-    background: linear-gradient(to bottom right, #4facfe, #00f2fe);
+    background: linear-gradient(to bottom right, #265de9, #495b02);
 }
 
 .app-wrap {
@@ -53,18 +53,27 @@ header h1 {
 /* Search Bar Styling */
 .search-box {
     display: flex;
+    justify-content: center;
     gap: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .search-bar {
     flex: 1;
     padding: 10px 15px;
+    margin: 5px;
     border: none;
     border-radius: 8px;
     outline: none;
     font-size: 16px;
     background: rgba(255, 255, 255, 0.8);
+}
+
+#weather-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto; /* Centers the icon */
+    filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.2)); /* Gives icon some depth */
 }
 
 #search-btn {
@@ -97,7 +106,7 @@ header h1 {
 .city-date .date {
     font-size: 14px;
     color: #f0f0f0;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 .temp-box .temp {
