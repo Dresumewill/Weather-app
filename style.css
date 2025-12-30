@@ -60,10 +60,12 @@ header h1 {
 
 .search-bar {
     flex: 1;
-    padding: 10px 15px;
+    padding: 10px 20px;
+    background-color: #333;
     margin: 5px;
     border: none;
-    border-radius: 8px;
+    cursor: pointer;
+    border-radius: 2px;
     outline: none;
     font-size: 16px;
     background: rgba(255, 255, 255, 0.8);
@@ -88,7 +90,7 @@ header h1 {
 }
 
 #search-btn:hover {
-    background-color: #e6e6e6;
+    background-color: #b17171;
 }
 
 /* Weather Info Styling */
