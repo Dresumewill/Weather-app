@@ -113,3 +113,7 @@ function changeBackground(weatherCondition) {
         default: body.classList.add('default'); break;
     }
 }
+
+// Automatically set the current year in the footer
+document.querySelector('.footer-content p').innerHTML = 
+    `&copy; ${new Date().getFullYear()} <span class="brand-name">WeatherWise</span>. All Rights Reserved.`;
