@@ -114,33 +114,6 @@ function changeBackground(weatherCondition) {
     }
 }
 
-try {
-        // This message will be displayed to the user along with the prompt.
-        let reason = "Please authenticate to access this part of the app";
-
-        // returns a boolean. True if the authentication was successful, false if it failed (e.g. because the user
-        // canceled it by pressing the back button).
-        let authenticationResult = (await requestLocalAuthentication(reason))["result"];
-    }
-    catch (e) {
-        switch(e) {
-            case "NotAvailable":
-                // The user has not configured an authentication method on the device.
-                // Occurred on Android in this case, difference to PasscodeNotSet is not completely clear.
-                break;
-            case "PasscodeNotSet":
-                // The user has not configured a passcode (iOS) or PIN/pattern/password (Android) on the device
-                break;
-            case "LockedOut":
-                // Authentication is temporarily locked due to too many attempts.
-                break;
-            case "PermanentlyLockedOut":
-                // Authentication is more persistently locked out than with "LockedOut".
-                // Strong authentication like PIN/Pattern/Password is required to unlock.
-                break;
-        }
-    }
-
 // Automatically set the current year in the footer
 document.querySelector('.footer-content p').innerHTML = 
     `&copy; ${new Date().getFullYear()} <span class="brand-name">WeatherWise</span>. All Rights Reserved.`;
