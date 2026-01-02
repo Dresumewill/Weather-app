@@ -18,14 +18,22 @@
         </header>
 
         <main>
+
             <section class="search-box">
                 <input 
                     type="text" 
-                    id="city-input"
-                    class="search-box-bar"
+                    id="city-input" 
+                    class="search-bar" 
                     placeholder="Barcelona"
                 >
-                <button id="search-btn">search</button>
+                <button id="search-btn">Search</button>
+                <button id="save-btn" title="Save to Favorites">❤️</button>
+            </section>
+
+            <section class="favorites-section">
+                <h3>Favorites:</h3>
+                <div id="favorites-list">
+                    </div>
             </section>
 
             <section class="current-weather" id="weather-result">
