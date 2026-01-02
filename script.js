@@ -11,6 +11,9 @@ const humidityElement = document.getElementById('humidity');
 const windElement = document.getElementById('wind-speed');
 const errorMsg = document.getElementById('error-message');
 const weatherResult = document.getElementById('weather-result');
+const saveBtn = document.getElementById('save-btn');
+const favoritesList = document.getElementById('favorites-list');
+let savedCities = JSON.parse(localStorage.getItem('weatherAppFavorites')) || [];
 
 // 2. Define API Key and Global variable for the timer
 const apiKey = '432fce959afd458bbc600111c6834184'; 
@@ -113,6 +116,60 @@ function changeBackground(weatherCondition) {
         default: body.classList.add('default'); break;
     }
 }
+
+// --- FAVORITES LOGIC ---
+
+// 1. Load favorites when the app starts
+renderFavorites();
+
+// 2. Event Listener for Save Button
+saveBtn.addEventListener('click', () => {
+    const cityName = document.getElementById('city-name').textContent.split(',')[0]; // Get just the city name
+    
+    // Avoid saving empty or duplicate cities
+    if(cityName && !savedCities.includes(cityName)) {
+        savedCities.push(cityName);
+        updateLocalStorage();
+        renderFavorites();
+    } else {
+        alert("City already in favorites or invalid!");
+    }
+});
+
+// 3. Function to save to browser storage
+function updateLocalStorage() {
+    localStorage.setItem('weatherAppFavorites', JSON.stringify(savedCities));
+}
+
+// 4. Function to draw the buttons
+function renderFavorites() {
+    favoritesList.innerHTML = ''; // Clear current list
+    
+    savedCities.forEach(city => {
+        // Create the button container
+        const btn = document.createElement('button');
+        btn.classList.add('fav-city-btn');
+        btn.innerHTML = `${city} <span class="delete-fav" onclick="removeFavorite('${city}', event)">✖</span>`;
+        
+        // Add click event to fetch weather
+        btn.addEventListener('click', (e) => {
+            // Don't trigger search if clicking the X button
+            if (e.target.classList.contains('delete-fav')) return;
+            getWeather(city);
+        });
+
+        favoritesList.appendChild(btn);
+    });
+}
+
+// 5. Function to remove a favorite
+// We attach this to the global window object so the HTML onclick works
+window.removeFavorite = function(city, event) {
+    event.stopPropagation(); // Stop the click from triggering the weather search
+    savedCities = savedCities.filter(c => c !== city); // Filter out the deleted city
+    updateLocalStorage();
+    renderFavorites();
+};
 
 // Automatically set the current year in the footer
 document.querySelector('.footer-content p').innerHTML = 
